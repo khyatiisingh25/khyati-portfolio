@@ -1,3 +1,4 @@
+
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Mail } from 'lucide-react';
 import { profile } from '@/data/portfolio';
@@ -43,7 +44,9 @@ export default function Contact() {
 
         {/* Email Card */}
         <motion.a
-          href={`mailto:${profile.email}`}
+          href={`https://mail.google.com/mail/?view=cm&fs=1&to=${profile.email}`}
+          target="_blank"
+          rel="noopener noreferrer"
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -62,15 +65,15 @@ export default function Contact() {
                 Get in touch
               </span>
 
-              <span className="text-xl md:text-2xl font-medium text-ink-100">
-                Email
+              <span className="block text-xl md:text-2xl font-medium text-ink-100 break-all">
+                {profile.email}
               </span>
             </div>
           </div>
 
           <ArrowUpRight
             size={24}
-            className="text-ink-400 transition-all duration-300 group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1"
+            className="shrink-0 text-ink-400 transition-all duration-300 group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1"
           />
         </motion.a>
 
