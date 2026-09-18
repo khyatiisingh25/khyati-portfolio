@@ -193,30 +193,6 @@ export const projects = [
       { label: 'Answer', icon: 'MessageSquare', desc: 'Context-grounded response' },
     ],
   },
-  {
-    id: 'attendance',
-    num: '04',
-    name: 'Smart Attendance System',
-    short:
-      'Facial-recognition-based attendance system using OpenCV and Flask to automate identity recognition and attendance recording.',
-    category: 'Computer Vision',
-    tags: ['Python', 'Flask', 'OpenCV'],
-    event: null,
-    github: 'https://github.com/khyatiisingh25/smart-attendance_clean',
-    overview:
-      'A facial-recognition-based attendance system using OpenCV and Flask to automate identity recognition and attendance recording.',
-    built: [
-      'Facial detection and recognition via OpenCV',
-      'Flask web interface for attendance management',
-      'Automated attendance marking on face match',
-    ],
-    pipeline: [
-      { label: 'Camera', icon: 'Camera', desc: 'Live video feed' },
-      { label: 'Face Recognition', icon: 'ScanFace', desc: 'OpenCV face matching' },
-      { label: 'Processing', icon: 'Cpu', desc: 'Identity verification' },
-      { label: 'Attendance', icon: 'ClipboardCheck', desc: 'Auto-marked attendance' },
-    ],
-  },
 ];
 
 export const experiences = [
