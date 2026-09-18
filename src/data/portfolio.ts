@@ -5,7 +5,6 @@ export const profile = {
   initials: 'K / S',
   location: 'Lucknow, Uttar Pradesh',
   email: 'khyatiisingh25@gmail.com',
-  phone: '+91 9026503943',
   linkedin: 'https://www.linkedin.com/in/khyati-singh-9a6629330',
   github: 'https://github.com/khyatiisingh25',
   role: 'CSE (AI) Undergraduate',
@@ -111,7 +110,6 @@ export const skillCategories = [
   },
 ];
 
-// All skills flattened for the constellation
 export const allSkills = skillCategories.flatMap((c) => c.skills);
 
 export const projects = [
@@ -250,7 +248,8 @@ export const experiences = [
     role: 'Open Source Contributor',
     org: 'GSSoC',
     fullOrg: 'GirlScript Summer of Code 2026',
-    description: 'Selected as a contributor and participated in open-source development through community repositories.',
+    description:
+      'Selected as a contributor and participated in open-source development through community repositories.',
     tags: ['Open Source'],
     link: null,
   },
@@ -264,15 +263,5 @@ export const education = [
     institution: 'Babu Banarasi Das University',
     period: '2024 — Present',
     location: 'Lucknow, India',
-    cgpa: '6.19',
-  },
-  {
-    id: 'school',
-    degree: 'ISC Class XII — 64.0% · ICSE Class X — 71.5%',
-    fullDegree: "HP Children's Academy",
-    institution: 'Lucknow, India',
-    period: '2024',
-    location: null,
-    cgpa: null,
   },
 ];

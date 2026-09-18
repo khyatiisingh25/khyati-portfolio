@@ -1,19 +1,26 @@
-
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+} from 'framer-motion';
 import { useEffect } from 'react';
-import { ArrowDown, Github, Linkedin } from 'lucide-react';
+import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
 import { profile } from '@/data/portfolio';
 import { setCursorState } from './Cursor';
 
 export default function Hero() {
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
+
   const sx = useSpring(mx, { stiffness: 50, damping: 20 });
   const sy = useSpring(my, { stiffness: 50, damping: 20 });
 
   const nameX = useTransform(sx, [-0.5, 0.5], [20, -20]);
   const nameY = useTransform(sy, [-0.5, 0.5], [10, -10]);
+
   const subX = useTransform(sx, [-0.5, 0.5], [-15, 15]);
+
   const bgX = useTransform(sx, [-0.5, 0.5], [30, -30]);
   const bgY = useTransform(sy, [-0.5, 0.5], [20, -20]);
 
@@ -140,18 +147,40 @@ export default function Hero() {
           </div>
 
           {/* Right: CTAs */}
-          <div className="flex flex-wrap gap-2">
-            <CTAButton onClick={() => scrollTo('projects')} primary>
-              Explore Work
-            </CTAButton>
+          <div className="flex flex-col items-start md:items-end gap-3">
+            <span className="text-label font-mono uppercase tracking-wider text-ink-400">
+              Let's Connect
+            </span>
 
-            <CTAButton href={profile.github} label="GitHub">
-              <Github size={15} />
-            </CTAButton>
+            <div className="flex flex-wrap gap-2">
+              <CTAButton
+                onClick={() => scrollTo('projects')}
+                primary
+              >
+                Explore Work
+              </CTAButton>
 
-            <CTAButton href={profile.linkedin} label="LinkedIn">
-              <Linkedin size={15} />
-            </CTAButton>
+              <CTAButton
+                href={`mailto:${profile.email}`}
+                label="Email"
+              >
+                <Mail size={15} />
+              </CTAButton>
+
+              <CTAButton
+                href={profile.github}
+                label="GitHub"
+              >
+                <Github size={15} />
+              </CTAButton>
+
+              <CTAButton
+                href={profile.linkedin}
+                label="LinkedIn"
+              >
+                <Linkedin size={15} />
+              </CTAButton>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -178,7 +207,10 @@ export default function Hero() {
             ease: 'easeInOut',
           }}
         >
-          <ArrowDown size={14} className="text-rose-400/60" />
+          <ArrowDown
+            size={14}
+            className="text-rose-400/60"
+          />
         </motion.div>
       </motion.div>
 

@@ -1,110 +1,96 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { Mail, Github, Linkedin, Phone, ArrowUpRight, Copy, Check } from 'lucide-react';
-import { SectionLabel } from './About';
+import { ArrowUpRight, Mail } from 'lucide-react';
 import { profile } from '@/data/portfolio';
 import { setCursorState } from './Cursor';
 
-const links = [
-  { label: 'Email', value: profile.email, href: `mailto:${profile.email}`, icon: Mail, display: profile.email },
-  { label: 'GitHub', value: profile.github, href: profile.github, icon: Github, display: 'github.com/khyatiisingh25' },
-  { label: 'LinkedIn', value: profile.linkedin, href: profile.linkedin, icon: Linkedin, display: 'linkedin.com/in/khyati-singh-9a6629330' },
-  { label: 'Phone', value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, '')}`, icon: Phone, display: profile.phone },
-];
-
 export default function Contact() {
-  const [copied, setCopied] = useState<string | null>(null);
-
-  const copy = (text: string, label: string) => {
-    navigator.clipboard.writeText(text);
-    setCopied(label);
-    setTimeout(() => setCopied(null), 2000);
-  };
-
   return (
-    <section id="contact" className="relative py-24 md:py-40 px-6">
-      <div className="max-w-5xl mx-auto">
-        <SectionLabel num="06" label="Contact" />
+    <section
+      id="contact"
+      className="relative px-6 py-24 md:py-32 overflow-hidden"
+    >
+      <div className="max-w-7xl mx-auto">
 
-        {/* Big headline */}
-        <motion.h2
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-12 text-display font-bold text-gradient"
-        >
-          Let's connect.
-        </motion.h2>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
-          className="mt-4 text-ink-300 max-w-md"
-        >
-          Open to opportunities, collaborations, and conversations about software and AI.
-        </motion.p>
-
-        {/* Links */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-3">
-          {links.map((link, i) => {
-            const Icon = link.icon;
-            return (
-              <motion.div
-                key={link.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="group relative"
-              >
-                <a
-                  href={link.href}
-                  target={link.label === 'Email' || link.label === 'Phone' ? undefined : '_blank'}
-                  rel="noopener noreferrer"
-                  onMouseEnter={() => setCursorState('hover')}
-                  onMouseLeave={() => setCursorState('default')}
-                  className="flex items-center gap-4 p-5 rounded-2xl glass hover:border-rose-400/20 transition-all duration-300"
-                >
-                  <div className="flex-shrink-0 flex h-11 w-11 items-center justify-center rounded-xl bg-white/[0.02] border-hairline group-hover:border-rose-400/30 transition-colors duration-300">
-                    <Icon size={17} className="text-rose-400" />
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-ink-400">
-                      {link.label}
-                    </span>
-                    <p className="text-sm text-ink-100 truncate mt-0.5">{link.display}</p>
-                  </div>
-                  <ArrowUpRight size={15} className="text-ink-400 group-hover:text-rose-300 transition-colors flex-shrink-0" />
-                </a>
-                <button
-                  onClick={() => copy(link.value, link.label)}
-                  className="absolute top-4 right-4 flex h-8 w-8 items-center justify-center rounded-lg text-ink-400 hover:text-rose-300 hover:bg-white/5 transition-all"
-                  aria-label={`Copy ${link.label}`}
-                >
-                  {copied === link.label ? <Check size={14} className="text-rose-400" /> : <Copy size={14} />}
-                </button>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Primary CTA */}
-        <motion.a
-          href={`mailto:${profile.email}`}
+        {/* Section Header */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-3 mb-5">
+            <span className="text-label font-mono text-rose-400">
+              06
+            </span>
+
+            <span className="h-px w-10 bg-rose-400/50" />
+
+            <span className="text-label font-mono uppercase text-ink-400">
+              Contact
+            </span>
+          </div>
+
+          <h2 className="text-4xl md:text-7xl font-extrabold tracking-tighter text-gradient">
+            LET'S CONNECT
+          </h2>
+
+          <p className="mt-6 max-w-xl text-ink-300 text-lg leading-relaxed">
+            Have an opportunity, idea, or project in mind?
+            I'd love to hear from you.
+          </p>
+        </motion.div>
+
+        {/* Email Card */}
+        <motion.a
+          href={`mailto:${profile.email}`}
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.15, duration: 0.6 }}
           onMouseEnter={() => setCursorState('hover')}
           onMouseLeave={() => setCursorState('default')}
-          className="mt-6 inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-rose-400 text-ink-950 font-semibold text-sm hover:bg-rose-300 transition-colors duration-300"
+          className="group flex items-center justify-between gap-5 rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8 transition-all duration-300 hover:border-rose-400/40 hover:bg-rose-400/[0.04]"
         >
-          <Mail size={18} />
-          Send an Email
+          <div className="flex items-center gap-5">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-rose-400/10 text-rose-400">
+              <Mail size={22} />
+            </div>
+
+            <div>
+              <span className="block text-label font-mono uppercase text-ink-400 mb-1">
+                Get in touch
+              </span>
+
+              <span className="text-xl md:text-2xl font-medium text-ink-100">
+                Email
+              </span>
+            </div>
+          </div>
+
+          <ArrowUpRight
+            size={24}
+            className="text-ink-400 transition-all duration-300 group-hover:text-rose-400 group-hover:translate-x-1 group-hover:-translate-y-1"
+          />
         </motion.a>
+
+        {/* Footer Message */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mt-20 flex flex-col md:flex-row md:items-center md:justify-between gap-5 border-t border-white/10 pt-6"
+        >
+          <span className="text-label font-mono uppercase text-ink-500">
+            Khyati Singh
+          </span>
+
+          <span className="text-label font-mono uppercase text-ink-500">
+            Building with curiosity
+          </span>
+        </motion.div>
+
       </div>
     </section>
   );
