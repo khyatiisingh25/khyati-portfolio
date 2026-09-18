@@ -163,8 +163,9 @@ export default function Hero() {
               </CTAButton>
 
               <CTAButton
-                href="https://mail.google.com/mail/?view=cm&fs=1&to=khyatiisingh25@gmail.com"
+                href={`mailto:${profile.email}`}
                 label="Email"
+                title="khyatiisingh25@gmail.com"
               >
                 <Mail size={15} />
               </CTAButton>
@@ -240,12 +241,14 @@ function CTAButton({
   onClick,
   primary,
   label,
+  title,
 }: {
   children?: React.ReactNode;
   href?: string;
   onClick?: () => void;
   primary?: boolean;
   label?: string;
+  title?: string;
 }) {
   const className = primary
     ? 'inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-rose-400 text-ink-950 font-semibold text-sm hover:bg-rose-300 transition-colors duration-300'
@@ -264,8 +267,7 @@ function CTAButton({
     return (
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        title={title}
         onMouseEnter={() => setCursorState('hover')}
         onMouseLeave={() => setCursorState('default')}
         className={className}
