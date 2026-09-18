@@ -1,3 +1,4 @@
+
 import {
   motion,
   useMotionValue,
@@ -63,6 +64,7 @@ export default function Hero() {
 
       {/* Main content */}
       <div className="relative z-10 w-full max-w-7xl mx-auto">
+
         {/* Top metadata row */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -161,7 +163,7 @@ export default function Hero() {
               </CTAButton>
 
               <CTAButton
-                href={`mailto:${profile.email}`}
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=khyatiisingh25@gmail.com"
                 label="Email"
               >
                 <Mail size={15} />
